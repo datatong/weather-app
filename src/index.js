@@ -1,4 +1,5 @@
 //QUERY SELECTORS//
+let searchForm = document.querySelector('#search-form');
 let searchInput = document.querySelector('#search-input');
 let searchBtn = document.querySelector('#search-button');
 
@@ -15,7 +16,11 @@ async function fetchWeather(location) {
 }
 
 //fetch weather data via search input
-searchBtn.addEventListener('click', getWeather);
+searchForm.addEventListener('submit', (evt) => {
+        evt.preventDefault();
+        getWeather();
+    });
+
 function getWeather() {
     let searchInput = document.querySelector('#search-input');
     const searchLocation = searchInput.value;

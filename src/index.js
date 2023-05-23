@@ -1,11 +1,11 @@
+
 //QUERY SELECTORS//
 let searchForm = document.querySelector('#search-form');
 let searchInput = document.querySelector('#search-input');
-let searchBtn = document.querySelector('#search-button');
 
-//show a default location weather or placeholder
+//Show a default location weather or placeholder
 
-//fetch
+//Fetch function
 async function fetchWeather(location) {
     try {
         const response = await fetch(
@@ -25,28 +25,34 @@ async function fetchWeather(location) {
             console.log(weatherObj.current.condition.icon);
             console.log(weatherObj.current.temp_f);
         })();
-        //show a loading message until fetch is complete (test with timeout)
+        displayWeather();
     } catch (err) {
         console.log('An error has occured')
         console.log(err);
-    }
-    
+    }    
 }
 
-//fetch weather data via submit form event
+//Fetch weather data via submit form event
 searchForm.addEventListener('submit', (evt) => {
         evt.preventDefault();
         searchWeather();
     });
 
-//function to search input location
+//Function to search input location
 function searchWeather() {
     let searchInput = document.querySelector('#search-input');
     const searchLocation = searchInput.value;
     fetchWeather(searchLocation);
 }
 
-//setTimeout as a promise for async/await
+//SetTimeout as a promise for async/await
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+    //Show a loading message until fetch is complete
+}
+
+//DOM MANIPULATION//
+function displayWeather() {
+    let location = document.querySelector('#location');
+    location.innerHTML = weatherObj.location.name;
 }

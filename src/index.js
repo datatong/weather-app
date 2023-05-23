@@ -1,3 +1,4 @@
+import key from './key';
 
 //QUERY SELECTORS//
 let searchForm = document.querySelector('#search-form');
@@ -9,7 +10,7 @@ let searchInput = document.querySelector('#search-input');
 async function fetchWeather(location) {
     try {
         const response = await fetch(
-            `http://api.weatherapi.com/v1/current.json?key=06291ad7191745fa992190804230705&q=${location}`,
+            `http://api.weatherapi.com/v1/current.json?key=${key}&q=${location}`,
             {
                 mode: 'cors',
             }

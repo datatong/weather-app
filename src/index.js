@@ -10,7 +10,8 @@ async function fetchWeather(location) {
             mode: 'cors',
         }
     );
-    console.log(response.json);
+    const weatherData = await response.json()    
+    console.log(weatherData);
 }
 
 //fetch weather data via search input

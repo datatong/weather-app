@@ -16,6 +16,7 @@ let searchInput = document.querySelector('#search-input');
         const weatherObj = await response.json();
         //Pull JSON and display it
         displayWeather(weatherObj);
+        console.log("Initial weather data loaded");
     } catch (err) {
         console.log('An error has occured')
         console.log(err);
@@ -50,6 +51,8 @@ async function fetchWeather(location) {
     }    
 }
 
+console.log("Page loaded");
+
 //Fetch weather data via submit form event
 searchForm.addEventListener('submit', (evt) => {
         evt.preventDefault();
@@ -76,7 +79,7 @@ function displayWeather(data) {
     const condition = data.current.condition.text;
     const icon = data.current.condition.icon;
     const tempf = data.current.temp_f;
-    //console.log(city, region, condition, icon, tempf);
+    console.log(city, region, condition, icon, tempf);
 
     const location = document.querySelector('#location');
     location.innerText = city + ", " + region;

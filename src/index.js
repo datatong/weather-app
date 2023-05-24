@@ -4,7 +4,22 @@ import key from './key';
 let searchForm = document.querySelector('#search-form');
 let searchInput = document.querySelector('#search-input');
 
-//Show a default location weather or placeholder
+(async function defaultWeather() {
+    try {
+        const response = await fetch(
+            `http://api.weatherapi.com/v1/current.json?key=${key}&q=washington`,
+            {
+                mode: 'cors',
+            }
+        );    
+        const weatherObj = await response.json();
+        //Pull JSON and display it
+        displayWeather(weatherObj);
+    } catch (err) {
+        console.log('An error has occured')
+        console.log(err);
+    }    
+})();
 
 //Fetch function
 async function fetchWeather(location) {
@@ -60,14 +75,14 @@ function displayWeather(data) {
     const condition = data.current.condition.text;
     const icon = data.current.condition.icon;
     const tempf = data.current.temp_f;
-    console.log(city, region, condition, icon, tempf);
+    //console.log(city, region, condition, icon, tempf);
 
-    let location = document.querySelector('#location');
+    const location = document.querySelector('#location');
     location.innerText = city + ", " + region;
-    let temp = document.querySelector('#temp');
+    const temp = document.querySelector('#temp');
     temp.innerText = tempf + "°F";
-    let conditionIcon = document.querySelector('#condition-icon');
+    const conditionIcon = document.querySelector('#condition-icon');
     conditionIcon.src = icon;
-    let conditionText = document.querySelector('#condition-text');
+    const conditionText = document.querySelector('#condition-text');
     conditionText.innerText = condition; 
 }

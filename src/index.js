@@ -33,7 +33,7 @@ async function fetchWeather(location) {
         );    
         const weatherObj = await response.json();
         console.log('fetching data...');
-        await timeout(5000);
+        await timeout(3000);
         //Test the timeout and fetch
         (function logWeatherData() {
             console.log(weatherObj.location.name);

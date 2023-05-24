@@ -17,8 +17,8 @@ async function fetchWeather(location) {
         );    
         const weatherObj = await response.json();
         console.log('fetching data...');
-        await timeout(5000);    
-        //console.log(weatherObj);
+        await timeout(5000);
+        //Test the timeout and fetch 
         (function logWeatherData() {
             console.log(weatherObj.location.name);
             console.log(weatherObj.location.region);
@@ -26,7 +26,8 @@ async function fetchWeather(location) {
             console.log(weatherObj.current.condition.icon);
             console.log(weatherObj.current.temp_f);
         })();
-        displayWeather();
+        //Pull JSON and display it
+        displayWeather(weatherObj);
     } catch (err) {
         console.log('An error has occured')
         console.log(err);
@@ -53,7 +54,14 @@ function timeout(ms) {
 }
 
 //DOM MANIPULATION//
-function displayWeather() {
+function displayWeather(data) {
+    const city = data.location.name;
+    const region = data.location.region;
+    const condition = data.current.condition.text;
+    const icon = data.current.condition.icon;
+    const tempf = data.current.temp_f;
+    console.log(city, region, condition, icon, tempf);
+
     let location = document.querySelector('#location');
-    location.innerHTML = weatherObj.location.name;
+    location.innerText = city;
 }

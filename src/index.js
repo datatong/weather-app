@@ -4,6 +4,7 @@ import key from './key';
 let searchForm = document.querySelector('#search-form');
 let searchInput = document.querySelector('#search-input');
 
+//Set up inital placeholder weather data
 (async function defaultWeather() {
     try {
         const response = await fetch(

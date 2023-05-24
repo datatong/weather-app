@@ -18,7 +18,8 @@ async function fetchWeather(location) {
         const weatherObj = await response.json();
         console.log('fetching data...');
         await timeout(5000);
-        //Test the timeout and fetch 
+        //Test the timeout and fetch
+        console.log(weatherObj);
         (function logWeatherData() {
             console.log(weatherObj.location.name);
             console.log(weatherObj.location.region);
@@ -63,5 +64,11 @@ function displayWeather(data) {
     console.log(city, region, condition, icon, tempf);
 
     let location = document.querySelector('#location');
-    location.innerText = city;
+    location.innerText = city + ", " + region;
+    let temp = document.querySelector('#temp');
+    temp.innerText = tempf + "°F";
+    let conditionIcon = document.querySelector('#condition-icon');
+    conditionIcon.src = icon;
+    let conditionText = document.querySelector('#condition-text');
+    conditionText.innerText = condition; 
 }

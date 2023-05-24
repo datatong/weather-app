@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="https://www.weatherapi.com/" title="Free Weather API"><img src='//cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com" border="0"></a>
     <div id="search-container" class="search-container">
         <form id="search-form" class="search-form">
             <input type="text" id="search-input" class="search-input" placeholder="Search City" value="">
@@ -15,9 +16,11 @@
         </form>
     </div>
     <div id="weather-container" class="weather-container">
-        <h1 id="location" class="location"></h1>
-        <div id="weather-icon" class="weather-icon"></div>
-    </div>
+        <h2 id="location" class="location"></h2>
+        <h1 id="temp" class="temp"></h1>
+        <img src="" id="condition-icon" class="condition-icon">
+        <div id="condition-text" class="condition-text"></div>
+    </div>    
     <script src="main.js"></script>
 </body>
 </html>

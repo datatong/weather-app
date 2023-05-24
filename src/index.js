@@ -19,7 +19,6 @@ async function fetchWeather(location) {
         console.log('fetching data...');
         await timeout(5000);
         //Test the timeout and fetch
-        console.log(weatherObj);
         (function logWeatherData() {
             console.log(weatherObj.location.name);
             console.log(weatherObj.location.region);
